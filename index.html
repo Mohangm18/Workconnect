@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkConnect - Daily Wage Worker Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav__brand">
+                    <h2>WorkConnect</h2>
+                </div>
+                <div class="nav__actions" id="nav-actions">
+                    <button class="btn btn--outline btn--sm" id="login-btn">Login</button>
+                    <button class="btn btn--primary btn--sm" id="signup-btn">Sign Up</button>
+                </div>
+                <div class="nav__user hidden" id="nav-user">
+                    <div class="search-bar">
+                        <input type="text" id="main-search" class="form-control" placeholder="Search for workers...">
+                        <button class="btn btn--primary" id="search-btn">🔍</button>
+                    </div>
+                    <div class="user-menu">
+                        <button class="btn btn--outline btn--sm" id="profile-btn">Profile</button>
+                        <button class="btn btn--outline btn--sm" id="logout-btn">Logout</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Landing Page -->
+        <section id="landing-page" class="landing-page">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero__content">
+                        <h1>Connect with Skilled Daily Wage Workers</h1>
+                        <p class="hero__subtitle">Find reliable plumbers, electricians, carpenters, cleaners and more in your area</p>
+                        <div class="hero__actions">
+                            <button class="btn btn--primary btn--lg" id="hero-signup">Sign Up as Worker</button>
+                            <button class="btn btn--outline btn--lg" id="hero-login">Find Workers</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Overview -->
+            <div class="categories-overview">
+                <div class="container">
+                    <h2>Popular Categories</h2>
+                    <div class="categories-grid" id="categories-grid">
+                        <!-- Categories will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="testimonials">
+                <div class="container">
+                    <h2>What Our Users Say</h2>
+                    <div class="testimonials-grid" id="testimonials-grid">
+                        <!-- Testimonials will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Worker Signup Page -->
+        <section id="worker-signup" class="auth-page hidden">
+            <div class="container">
+                <div class="auth-form">
+                    <h2>Sign Up as Worker</h2>
+                    <form id="worker-signup-form">
+                        <!-- Personal Details -->
+                        <div class="form-section">
+                            <h3>Personal Details</h3>
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" name="fullName" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Date of Birth *</label>
+                                    <input type="date" class="form-control" name="dob" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Gender *</label>
+                                    <select class="form-control" name="gender" required>
+                                        <option value="">Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Contact Number *</label>
+                                    <input type="tel" class="form-control" name="phone" pattern="[0-9]{10}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Current Address *</label>
+                                <textarea class="form-control" name="address" rows="3" required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Work Details -->
+                        <div class="form-section">
+                            <h3>Work Details</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Work Category *</label>
+                                    <select class="form-control" name="category" required>
+                                        <option value="">Select Category</option>
+                                        <option value="Plumber">Plumber</option>
+                                        <option value="Electrician">Electrician</option>
+                                        <option value="Carpenter">Carpenter</option>
+                                        <option value="Mason">Mason</option>
+                                        <option value="Painter">Painter</option>
+                                        <option value="Cleaner">Cleaner</option>
+                                        <option value="Security Guard">Security Guard</option>
+                                        <option value="Cook">Cook</option>
+                                        <option value="Driver">Driver</option>
+                                        <option value="General Labor">General Labor</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Years of Experience *</label>
+                                    <select class="form-control" name="experience" required>
+                                        <option value="">Select Experience</option>
+                                        <option value="0-1">0-1 years</option>
+                                        <option value="1-3">1-3 years</option>
+                                        <option value="3-5">3-5 years</option>
+                                        <option value="5-10">5-10 years</option>
+                                        <option value="10+">10+ years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Skills & Specializations</label>
+                                <textarea class="form-control" name="skills" rows="3" placeholder="E.g., Pipe installation, tap repair, bathroom renovation..."></textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Work Location *</label>
+                                    <input type="text" class="form-control" name="location" placeholder="City/Area" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Availability *</label>
+                                    <select class="form-control" name="availability" required>
+                                        <option value="">Select Availability</option>
+                                        <option value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                        <option value="Weekends">Weekends only</option>
+                                        <option value="Flexible">Flexible</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Expected Daily Wage Range</label>
+                                <div class="wage-range">
+                                    <input type="range" id="wage-slider" min="300" max="2000" value="800" class="wage-slider">
+                                    <div class="wage-display">₹<span id="wage-value">800</span> - ₹<span id="wage-max">1200</span> per day</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Document Upload -->
+                        <div class="form-section">
+                            <h3>Document Verification</h3>
+                            <div class="form-group">
+                                <label class="form-label">Address Proof *</label>
+                                <input type="file" class="form-control" name="addressProof" accept=".jpg,.jpeg,.png,.pdf" required>
+                                <small>Upload Aadhaar/Utility Bill/Bank Statement</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">ID Proof *</label>
+                                <select class="form-control" name="idType" required>
+                                    <option value="">Select ID Type</option>
+                                    <option value="aadhaar">Aadhaar Card</option>
+                                    <option value="pan">PAN Card</option>
+                                    <option value="voter">Voter ID</option>
+                                    <option value="driving">Driving License</option>
+                                </select>
+                                <input type="file" class="form-control mt-8" name="idProof" accept=".jpg,.jpeg,.png,.pdf" required>
+                            </div>
+                        </div>
+
+                        <!-- Subscription Plans -->
+                        <div class="form-section">
+                            <h3>Choose Subscription Plan</h3>
+                            <div class="subscription-plans" id="subscription-plans">
+                                <!-- Plans will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--outline" id="back-to-landing">Back</button>
+                            <button type="submit" class="btn btn--primary">Complete Registration</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Login Page -->
+        <section id="customer-login" class="auth-page hidden">
+            <div class="container">
+                <div class="auth-form">
+                    <h2>Login to Find Workers</h2>
+                    <form id="customer-login-form">
+                        <div class="form-group">
+                            <label class="form-label">Email or Phone Number</label>
+                            <input type="text" class="form-control" name="emailOrPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <div class="password-field">
+                                <input type="password" class="form-control" name="password" required>
+                                <button type="button" class="password-toggle" id="password-toggle">👁️</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn--outline" id="back-to-landing-login">Back</button>
+                            <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                        </div>
+                        <div class="social-login">
+                            <p>Or login with:</p>
+                            <div class="social-buttons">
+                                <button type="button" class="btn btn--outline social-btn">Gmail</button>
+                                <button type="button" class="btn btn--outline social-btn">Facebook</button>
+                            </div>
+                        </div>
+                        <div class="signup-link">
+                            <p>New user? <a href="#" id="new-user-signup">Sign up as worker</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Home/Feed Page -->
+        <section id="home-page" class="app-page hidden">
+            <div class="container">
+                <!-- Search Bar -->
+                <div class="search-section">
+                    <div class="search-bar-main">
+                        <input type="text" id="home-search" class="form-control" placeholder="Search for workers by name, category, or location...">
+                        <button class="btn btn--primary" id="home-search-btn">Search</button>
+                    </div>
+                    <div class="search-filters">
+                        <select class="form-control" id="category-filter">
+                            <option value="">All Categories</option>
+                        </select>
+                        <select class="form-control" id="location-filter">
+                            <option value="">All Locations</option>
+                        </select>
+                        <select class="form-control" id="rating-filter">
+                            <option value="">Any Rating</option>
+                            <option value="9">9+ Rating</option>
+                            <option value="8">8+ Rating</option>
+                            <option value="7">7+ Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Categories Grid -->
+                <div class="categories-section">
+                    <h3>Browse by Category</h3>
+                    <div class="categories-grid" id="home-categories">
+                        <!-- Categories populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Featured Workers -->
+                <div class="featured-section">
+                    <h3>Featured Workers</h3>
+                    <div class="workers-grid" id="featured-workers">
+                        <!-- Workers populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Recent Activity Feed -->
+                <div class="activity-section">
+                    <h3>Recent Activity</h3>
+                    <div class="activity-feed" id="activity-feed">
+                        <!-- Activity items populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Results Page -->
+        <section id="search-results" class="app-page hidden">
+            <div class="container">
+                <div class="search-header">
+                    <h2>Search Results</h2>
+                    <div class="search-controls">
+                        <div class="view-toggle">
+                            <button class="btn btn--outline btn--sm active" id="grid-view">Grid</button>
+                            <button class="btn btn--outline btn--sm" id="list-view">List</button>
+                        </div>
+                        <select class="form-control" id="sort-by">
+                            <option value="rating">Sort by Rating</option>
+                            <option value="experience">Sort by Experience</option>
+                            <option value="price">Sort by Price</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="search-results-grid" id="search-results-container">
+                    <!-- Search results populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Worker Profile Page -->
+        <section id="worker-profile" class="app-page hidden">
+            <div class="container">
+                <div class="profile-header">
+                    <button class="btn btn--outline btn--sm" id="back-to-search">← Back to Search</button>
+                </div>
+                <div class="profile-content" id="profile-content">
+                    <!-- Profile content populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Dashboard -->
+        <section id="customer-dashboard" class="app-page hidden">
+            <div class="container">
+                <h2>My Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Search History</h3>
+                            <div id="search-history">
+                                <!-- Search history items -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Saved Workers</h3>
+                            <div id="saved-workers">
+                                <!-- Saved workers -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Recent Contacts</h3>
+                            <div id="recent-contacts">
+                                <!-- Recent contacts -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Worker Dashboard -->
+        <section id="worker-dashboard" class="app-page hidden">
+            <div class="container">
+                <h2>Worker Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Profile Status</h3>
+                            <div class="status status--success">Active</div>
+                            <p>Profile completion: 85%</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Subscription</h3>
+                            <p><strong>3 Month Plan</strong></p>
+                            <p>Valid until: March 15, 2025</p>
+                            <button class="btn btn--primary btn--sm">Renew</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>My Rating</h3>
+                            <div class="rating-display">8.7/10</div>
+                            <p>Based on 15 reviews</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h3>Recent Inquiries</h3>
+                            <div class="inquiries-list">
+                                <p>3 new inquiries this week</p>
+                                <button class="btn btn--outline btn--sm">View All</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Contact Worker</h3>
+                <button class="modal-close" id="close-contact-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Contact details will be revealed after payment of connection fee.</p>
+                <div class="contact-info">
+                    <p><strong>Connection Fee:</strong> ₹50</p>
+                    <p><strong>Worker:</strong> <span id="modal-worker-name"></span></p>
+                    <p><strong>Category:</strong> <span id="modal-worker-category"></span></p>
+                </div>
+                <button class="btn btn--primary btn--full-width" id="pay-and-contact">Pay ₹50 & Get Contact Details</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
